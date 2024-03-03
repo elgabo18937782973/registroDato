@@ -4,15 +4,30 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using proF.modelo;
+
+
 
 namespace minipro
 {
+    
     internal class Program
     {
+
+        static string pathBase = @"C:\Users\luis solares\Desktop\gabriel\registroDato\proF\recurso\";
+
+        static string pathArchivo;
+
+
+
+
+        static List<ObjComponente> listCompra;
 
 
         static void Main(string[] args)
         {
+
+            listCompra = new List<ObjComponente>();
 
             Console.WriteLine("bienvenido a compoPC, ¿desea registrarse?");
             Console.WriteLine("1.- si  2- no ");
@@ -76,7 +91,6 @@ namespace minipro
                             break;
 
 
-
                     }
                 }
                 Console.WriteLine("gracias por visitarnos, hasta pronto");
@@ -104,12 +118,21 @@ namespace minipro
             int edad = int.Parse(Console.ReadLine());
             string registro = ($"cliente : {nom} \nApellido: {apellido}\nEdad: {edad}");
 
-            string archivo = @"D:\proyecto final\proF\proF.txt";
-            File.AppendAllText(archivo,registro);
+            pathArchivo = $"{pathBase}{nom}-{edad}.txt";
+            saveFile(pathArchivo, registro);
             Console.WriteLine("muchas gracias por regitrarse");
 
             Console.ReadKey();
 
+        }
+        static void saveFile(string archivo , string contenido)
+        {
+            if (archivo == null)
+            {
+                archivo = pathArchivo;
+            }
+
+            File.AppendAllText(archivo, contenido);
         }
         static void facturacliente( )
         {
@@ -118,6 +141,7 @@ namespace minipro
             Console.WriteLine("edad");
             Console.WriteLine("componentes comprados");
             Console.WriteLine();
+            print();
 
         }
         public static void PlacasBase()
@@ -468,69 +492,91 @@ namespace minipro
 
             int opcion5 = int.Parse(Console.ReadLine());
             Console.Clear();
+
+
+            double precio = 0.0;
+            string nombreProducto = "";
             switch (opcion5)
             {
                 case 1:
-                    Console.WriteLine("entendido, ¿cuantas Intel Core i5 12400F Socket 1700 desea adquirir");
+                    Console.WriteLine("entendido, ¿cuantas WD Black SN850X 1TB M.2 + Disipador desea adquirir");
                     double c1 = double.Parse(Console.ReadLine());
-                    double tar1 = c1 * poc1;
+                    precio = c1 * poc1;
+                    nombreProducto = "WD Black SN850X 1TB M.2 + Disipador";
                     Console.Clear();
-                    Console.WriteLine($"su precio total es de {tar1}$, gracias por su compra ");
+                    Console.WriteLine($"su precio total es de {precio}$, gracias por su compra ");
                     Console.ReadKey();
-                    Console.Clear();
+                    Console.Clear();   
                     break;
                 case 2:
-                    Console.WriteLine("entendido, ¿cuantas Intel Core i5 12400F Socket 1700 desea adquirir");
+                    Console.WriteLine("entendido, ¿cuantas Seagate Barracuda 2TB 3.5 HDD desea adquirir");
                     double c2 = double.Parse(Console.ReadLine());
-                    double tar2 = c2 * poc2;
+                    precio = c2 * poc2;
+                    nombreProducto = "Seagate Barracuda 2TB 3.5 HDD";
                     Console.Clear();
-                    Console.WriteLine($"su precio total es de {tar2}$, gracias por su compra ");
+                    Console.WriteLine($"su precio total es de {precio}$, gracias por su compra ");
                     Console.ReadKey();
                     Console.Clear();
                     break;
                 case 3:
-                    Console.WriteLine("entendido, ¿cuantas Intel Core i5 12400F Socket 1700 desea adquirir");
+                    Console.WriteLine("entendido, ¿cuantas Seagate Expansion Portable 1TB 2.5 HDD desea adquirir");
                     double c3 = double.Parse(Console.ReadLine());
-                    double tar3 = c3 * poc3;
+                    precio = c3 * poc3;
+                    nombreProducto = "Seagate Expansion Portable 1TB 2.5 HDD";
                     Console.Clear();
-                    Console.WriteLine($"su precio total es de {tar3}$, gracias por su compra ");
+                    Console.WriteLine($"su precio total es de {precio}$, gracias por su compra ");
                     Console.ReadKey();
                     Console.Clear();
                     break;
                 case 4:
-                    Console.WriteLine("entendido, ¿cuantas Intel Core i5 12400F Socket 1700 desea adquirir");
+                    Console.WriteLine("entendido, ¿cuantas WD Black SN850X 4TB M.2 desea adquirir");
                     double c4 = double.Parse(Console.ReadLine());
-                    double tar4 = c4 * poc4;
+                    precio = c4 * poc4;
+                    nombreProducto = "WD Black SN850X 4TB M.2";
                     Console.Clear();
-                    Console.WriteLine($"su precio total es de {tar4}$, gracias por su compra ");
+                    Console.WriteLine($"su precio total es de {precio}$, gracias por su compra ");
                     Console.ReadKey();
                     Console.Clear();
                     break;
                 case 5:
-                    Console.WriteLine("entendido, ¿cuantas Intel Core i5 12400F Socket 1700 desea adquirir");
+                    Console.WriteLine("entendido, ¿cuantas SSD WD Black SN770M 1TB M.2 2230 desea adquirir");
                     double c5 = double.Parse(Console.ReadLine());
-                    double tar5 = c5 * poc5;
+                    precio = c5 * poc5;
+                    nombreProducto = "SSD WD Black SN770M 1TB M.2 2230";
                     Console.Clear();
-                    Console.WriteLine($"su precio total es de {tar5}$, gracias por su compra ");
+                    Console.WriteLine($"su precio total es de {precio}$, gracias por su compra ");
                     Console.ReadKey();
                     Console.Clear();
                     break;
                 case 6:
-                    Console.WriteLine("entendido, ¿cuantas Intel Core i5 12400F Socket 1700 desea adquirir");
+                    Console.WriteLine("entendido, ¿cuantas Disco Duro Seagate Barracuda 4TB SATA III 3.5 desea adquirir");
                     double c6 = double.Parse(Console.ReadLine());
-                    double tar6 = c6 * poc6;
+                    precio = c6 * poc6;
+                    nombreProducto = "Disco Duro Seagate Barracuda 4TB SATA III 3.5";
                     Console.Clear();
-                    Console.WriteLine($"su precio total es de {tar6}$, gracias por su compra ");
+                    Console.WriteLine($"su precio total es de {precio}$, gracias por su compra ");
                     Console.ReadKey();
                     Console.Clear();
                     break;
 
 
             }
+            saveFile(null, $"{nombreProducto} - {precio}");
+            listCompra.Add(new ObjComponente(nombreProducto, precio, 5));
 
             Console.Clear();
         }
+
+        public static void print()
+        {
+            for(int i = 0; i< listCompra.Count; i++)
+            {
+                ObjComponente obj = listCompra[i];
+                Console.WriteLine($"{obj.nombre} - {obj.precio}");
+            }
+        }
     }
+
 
 
 }
