@@ -1,0 +1,7 @@
+cliente : gabriel  
+ apellido: alcon
+ edad: 22cliente : gabriel 
+Apellido: alcon
+Edad: 22cliente : gabriel 
+Apellido: alcon
+Edad: 22
